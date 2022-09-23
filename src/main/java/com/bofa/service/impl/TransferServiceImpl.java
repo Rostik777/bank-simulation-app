@@ -25,8 +25,9 @@ public class TransferServiceImpl implements TransactionService {
     AccountRepository accountRepository;
     TransactionRepository transactionRepository;
 
-    public TransferServiceImpl(AccountRepository accountRepository) {
+    public TransferServiceImpl(AccountRepository accountRepository, TransactionRepository transactionRepository) {
         this.accountRepository = accountRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     @Override
@@ -79,7 +80,7 @@ public class TransferServiceImpl implements TransactionService {
         if(sender == null || receiver == null) {
             throw new BadRequestException("Sender or Receiver cannot be null");
         }
-        if(sender.getId().equals(sender.getId())) {
+        if(sender.getId().equals(receiver.getId())) {
             throw new BadRequestException("Sender account needs to be different than receiver");
         }
         findAccountById(sender.getId());
