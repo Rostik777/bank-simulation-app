@@ -1,5 +1,6 @@
 package com.bofa.service.impl;
 
+import com.bofa.enums.AccountStatus;
 import com.bofa.enums.AccountType;
 import com.bofa.model.Account;
 import com.bofa.repository.AccountRepository;
@@ -26,6 +27,7 @@ public class AccountServiceImpl implements AccountService {
                 .userId(userId)
                 .accountType(accountType)
                 .balance(balance)
+                .accountStatus(AccountStatus.ACTIVE)
                 .build();
         return accountRepository.save(account);
     }

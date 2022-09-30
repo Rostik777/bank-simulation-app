@@ -1,5 +1,6 @@
 package com.bofa.model;
 
+import com.bofa.enums.AccountStatus;
 import com.bofa.enums.AccountType;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class Account {
     private AccountType accountType;
     private Date creationDate;
     private Long userId;
+    private AccountStatus accountStatus;
 }
