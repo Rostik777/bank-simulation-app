@@ -41,4 +41,11 @@ public class AccountController {
 
         return "redirect:/index";
     }
+
+    @GetMapping("/delete/{id}")
+    public String deleteAccount(@PathVariable("id") UUID id) {
+        accountService.deleteAccount(id);
+
+        return "redirect:/index";
+    }
 }
