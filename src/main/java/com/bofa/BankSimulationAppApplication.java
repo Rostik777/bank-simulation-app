@@ -31,7 +31,5 @@ public class BankSimulationAppApplication {
 //        System.out.println(transactionService.findAllTransaction().get(0));
 //
 //        accountService.listAllAccounts().forEach(System.out::println);
-
     }
-
 }
