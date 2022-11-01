@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Controller
 public class TransactionController {
@@ -40,5 +42,15 @@ public class TransactionController {
         transactionService.makeTransfer(sender, receiver, transaction.getAmount(), new Date(), transaction.getMessage());
 
         return "redirect:/make-transfer";
+    }
+
+    @GetMapping("/transaction/{id}")
+    public String getAccountTransactions(@PathVariable("id") UUID id, Model model) {
+        System.out.println(id);
+        System.out.println(transactionService.findAllTransaction());
+        System.out.println(transactionService.findTransactionListById(id));
+        model.addAttribute("allTransactions", transactionService.findTransactionListById(id));
+
+        return "/transaction/transactions";
     }
 }
